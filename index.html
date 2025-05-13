@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>💈 Júlio Cesar</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Cabeçalho -->
+  <header id="header">
+    <div class="container">
+      <h1 class="logo">Barbearia do Júlio</h1>
+      <p>Estilo, tradição e cuidado com você.</p>
+      <a href="https://whatsss.link/8fk7po" class="button">Agende seu horário</a>
+    </div>
+  </header>
+
+  <!-- Sobre -->
+  <section id="about">
+    <div class="container">
+      <h2>Sobre nós</h2>
+      <p>Com mais de 10 anos de experiência, a Barbearia do Julio oferece cortes modernos, clássicos e uma experiência diferenciada para quem valoriza o cuidado pessoal.</p>
+    </div>
+  </section>
+
+  <!-- Serviços -->
+  <section id="services">
+    <div class="container">
+      <h2>Serviços</h2>
+      <ul>
+        <li>Corte Masculino</li>
+        <li>Barba e Bigode</li>
+        <li>Sobrancelha</li>
+        <li>Hidratação Capilar</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Galeria -->
+  <section id="gallery">
+    <div class="container">
+      <h2>Galeria</h2>
+      <div class="carousel-container" aria-label="Galeria de imagens da Barbearia do Júlio">
+        <div class="carousel-track">
+          <img src="imagens/imagem1.jpg" alt="Corte 1">
+          <img src="imagens/imagem2.jpg" alt="Corte 2">
+          <img src="imagens/imagem3.jpg" alt="Corte 3">
+        </div>
+        <div class="carousel-controls">
+          <button class="prev" aria-label="Imagem anterior">←</button>
+          <button class="next" aria-label="Próxima imagem">→</button>
+        </div>
+        <div class="carousel-dots">
+          <span class="dot active" aria-label="Imagem 1"></span>
+          <span class="dot" aria-label="Imagem 2"></span>
+          <span class="dot" aria-label="Imagem 3"></span>
+        </div>
+        <button class="pause-carousel" aria-label="Pausar carrossel">⏸</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section id="contact">
+    <div class="container">
+      <h2>Contato</h2>
+      <p>📍 Av. Contorno Leste, 11, Cohatrac I, São Luis/Ma</p>
+      <p>🕒 Seg a Sáb: 08:30h às 19:30h</p>
+      <p>🕒 Dom: 08:30 às 12:00</p>
+      <p>📞 (99) 98556-0565</p>
+      <a href="https://whatsss.link/8fk7po" class="button">Fale pelo WhatsApp</a>
+    </div>
+  </section>
+
+  <footer id="footer">
+    <div class="container">
+      <p>© 2025 Barbearia do Julio. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    const track = document.querySelector('.carousel-track');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+    const dots = document.querySelectorAll('.carousel-dots .dot');
+    const pauseBtn = document.querySelector('.pause-carousel');
+    let currentIndex = 0;
+    let isPaused = false;
+
+    function updateCarousel() {
+      track.style.transform = `translate3d(-${currentIndex * 100}%, 0, 0)`;
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentIndex);
+      });
+    }
+
+    prevBtn.addEventListener('click', () => {
+      currentIndex = currentIndex > 0 ? currentIndex - 1 : 2;
+      updateCarousel();
+      track.style.animation = 'none';
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentIndex = currentIndex < 2 ? currentIndex + 1 : 0;
+      updateCarousel();
+      track.style.animation = 'none';
+    });
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        currentIndex = index;
+        updateCarousel();
+        track.style.animation = 'none';
+      });
+    });
+
+    pauseBtn.addEventListener('click', () => {
+      isPaused = !isPaused;
+      track.style.animationPlayState = isPaused ? 'paused' : 'running';
+      pauseBtn.textContent = isPaused ? '▶' : '⏸';
+    });
+  </script>
+</body>
+</html>

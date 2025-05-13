@@ -1,0 +1,244 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #181818;
+  --text: #e6e6e6;
+  --accent: #d4af37;
+  --dark-accent: #b08a2e;
+  --font-main: 'Segoe UI', sans-serif;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  font-size: clamp(18px, 2vw, 22px);
+}
+
+.container {
+  width: 90%;
+  text-align: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+header {
+  text-align: center;
+  padding: 3rem 0;
+  background: #111;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  font-size: 1.1rem;
+  color: #aaa;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  background-color: #000;
+  padding: 1rem 0;
+}
+
+nav ul li {
+  margin: 0 1rem;
+}
+
+nav ul li a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: var(--accent);
+}
+
+section {
+  padding: 4rem 0;
+}
+
+section h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--accent);
+}
+
+#services ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+#services ul li {
+  background: #2a2a2a;
+  padding: 1rem;
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 1rem;
+  flex: 1 1 200px;
+  text-align: center;
+}
+
+#services ul li:hover {
+  background: #333;
+}
+
+.carousel-container {
+  max-width: 1000px;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  margin: 2rem auto;
+  overflow: hidden;
+  border-radius: 10px;
+  position: relative;
+}
+
+
+.carousel-track {
+  display: flex;
+  width: 300%;
+  animation: slide 15s infinite ease-in-out;
+}
+
+.carousel-track img {
+  width: 100%;
+  flex-shrink: 0;
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
+}
+
+.carousel-container:hover .carousel-track {
+  animation-play-state: paused;
+}
+
+.carousel-controls {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+
+.carousel-controls button {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 1.2rem;
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+}
+
+.carousel-dots .dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: #ccc;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.carousel-dots .dot.active {
+  background: var(--accent);
+}
+
+.pause-carousel {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 1rem;
+}
+
+@keyframes slide {
+  0%, 20% {
+    transform: translateX(0%);
+  }
+  25%, 45% {
+    transform: translateX(-100%);
+  }
+  50%, 70% {
+    transform: translateX(-200%);
+  }
+  75%, 100% {
+    transform: translateX(0%);
+  }
+}
+
+
+.button {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--accent);
+  color: #000;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 1rem;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: var(--dark-accent);
+}
+
+footer {
+  text-align: center;
+  padding: 2rem 0;
+  background: #111;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .carousel-container {
+    max-width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+
+  nav ul {
+    flex-direction: column;
+  }
+
+  nav ul li {
+    margin: 0.5rem 0;
+  }
+
+  #services ul {
+    flex-direction: column;
+    align-items: center;
+  }
+}
